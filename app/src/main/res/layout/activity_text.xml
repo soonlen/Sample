@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:text="用户名"
+            android:textSize="15sp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:hint="中文名称" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:text="密码"
+            android:textSize="15sp" />
+
+        <com.wzf.com.sample.view.ClearEditText
+            android:id="@+id/activity_clear_et"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:hint="密码" />
+    </LinearLayout>
+
+    <com.wzf.com.sample.view.DelTextView
+        android:id="@+id/activity_clear_dt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/holo_green_light"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="reset"
+            android:text="复位" />
+    </LinearLayout>
+
+    <com.wzf.com.sample.view.tag.TagCloudLinkView
+        android:id="@+id/activity_clear_tag_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:deletableTextColor="#000"
+        app:deletableTextSize="14sp"
+        app:isDeletable="true"></com.wzf.com.sample.view.tag.TagCloudLinkView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:onClick="resetTag"
+        android:text="复位Tag" />
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal">
+
+        <com.wzf.com.sample.view.WheelView
+            android:id="@+id/wheelview_l"
+            app:itemNumber="3"
+            app:lineColor="@android:color/darker_gray"
+            app:lineHeight="2dp"
+            app:maskHeight="32dp"
+            app:noEmpty="true"
+            app:normalTextColor="@color/colorPrimary"
+            app:normalTextSize="14sp"
+            app:selectedTextColor="@color/colorAccent"
+            app:selectedTextSize="22sp"
+            app:unitHeight="50dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+        <com.wzf.com.sample.view.WheelView
+            android:id="@+id/wheelview_c"
+            app:itemNumber="3"
+            app:lineColor="@android:color/darker_gray"
+            app:lineHeight="2dp"
+            app:maskHeight="32dp"
+            app:noEmpty="true"
+            app:normalTextColor="@color/colorPrimary"
+            app:normalTextSize="14sp"
+            app:selectedTextColor="@color/colorAccent"
+            app:selectedTextSize="22sp"
+            app:unitHeight="50dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.wzf.com.sample.view.WheelView
+            android:id="@+id/wheelview_r"
+            app:itemNumber="3"
+            app:lineColor="@android:color/darker_gray"
+            app:lineHeight="2dp"
+            app:maskHeight="32dp"
+            app:noEmpty="true"
+            app:normalTextColor="@color/colorPrimary"
+            app:normalTextSize="14sp"
+            app:selectedTextColor="@color/colorAccent"
+            app:selectedTextSize="22sp"
+            app:unitHeight="50dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

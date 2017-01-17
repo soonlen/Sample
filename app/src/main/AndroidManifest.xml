@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wzf.com.sample">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".loadingview.LoadingViewActivity" />
+        <activity android:name=".webview.WebViewActivity" />
+        <activity android:name=".activity.BounceListViewActivity" />
+        <activity android:name=".activity.BounceScrollViewActivity" />
+        <activity android:name=".activity.XListViewActivity" />
+        <activity android:name=".activity.TextActivity" />
+        <activity android:name=".activity.UtilActivity" />
+        <activity android:name=".activity.WheelViewActivity" />
+        <activity android:name=".activity.CommAdapterActivity" />
+        <activity android:name=".activity.DesignPatterns.DesignPatternsActivity" />
+        <activity android:name=".activity.DesignPatterns.SingletonActivity" />
+        <activity android:name=".activity.AnimationListViewActivity" />
+        <activity
+            android:name=".activity.SoftKeybordActivity"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+
+</manifest>
