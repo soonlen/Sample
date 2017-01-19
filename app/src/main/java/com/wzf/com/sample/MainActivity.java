@@ -11,8 +11,11 @@ import android.widget.ListView;
 import com.wzf.com.sample.activity.AnimationListViewActivity;
 import com.wzf.com.sample.activity.BounceListViewActivity;
 import com.wzf.com.sample.activity.BounceScrollViewActivity;
+import com.wzf.com.sample.activity.ButterActivity;
 import com.wzf.com.sample.activity.CommAdapterActivity;
+import com.wzf.com.sample.activity.DataBindTestActivity;
 import com.wzf.com.sample.activity.DesignPatterns.DesignPatternsActivity;
+import com.wzf.com.sample.activity.ScreemShotActivity;
 import com.wzf.com.sample.activity.SoftKeybordActivity;
 import com.wzf.com.sample.activity.TextActivity;
 import com.wzf.com.sample.activity.UtilActivity;
@@ -49,7 +52,10 @@ public class MainActivity extends AppCompatActivity
                 "CommAdapter",
                 "DesignPatter",
                 "AnimationListView",
-                "SoftKeybordActivity"
+                "SoftKeybordActivity",
+                "ButterActivity",
+                "ScreemShotActivity",
+                "DataBindTestActivity"
         };
     }
 
@@ -104,6 +110,15 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 11:
                 startActivity(new Intent(MainActivity.this, SoftKeybordActivity.class));
+                break;
+            case 12:
+                startActivity(new Intent(MainActivity.this, ButterActivity.class));
+                break;
+            case 13:
+                startActivity(new Intent(MainActivity.this, ScreemShotActivity.class));
+                break;
+            case 14:
+                startActivity(new Intent(MainActivity.this, DataBindTestActivity.class));
                 break;
         }
     }

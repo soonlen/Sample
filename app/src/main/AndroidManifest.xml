@@ -28,6 +28,9 @@
         <activity android:name=".activity.DesignPatterns.DesignPatternsActivity" />
         <activity android:name=".activity.DesignPatterns.SingletonActivity" />
         <activity android:name=".activity.AnimationListViewActivity" />
+        <activity android:name=".activity.ButterActivity" />
+        <activity android:name=".activity.ScreemShotActivity" />
+        <activity android:name=".activity.DataBindTestActivity"/>
         <activity
             android:name=".activity.SoftKeybordActivity"
             android:windowSoftInputMode="adjustResize" />
