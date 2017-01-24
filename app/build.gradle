@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+// 应用插件
+apply plugin: 'com.neenbedankt.android-apt'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -20,6 +21,9 @@ android {
     dataBinding {//使用databinding框架
         enabled true
     }
+    /* packagingOptions {
+         exclude 'META-INF/services/javax.annotation.processing.Processor'
+     }*/
 }
 
 
@@ -32,5 +36,34 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //使用Butter注入式框架,2个
     compile 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.jakewharton:butterknife-compiler:8.4.0'
+    // dagger 2 的配置
+    compile 'com.google.dagger:dagger:2.6'
+    provided 'com.google.dagger:dagger-compiler:2.6'
+    provided 'org.glassfish:javax.annotation:10.0-b28'// 添加java 注解库
+    compile 'com.squareup.retrofit2:retrofit:+'//Retrofit2所需要的包
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'//ConverterFactory的Gson依赖包
+    compile 'com.squareup.retrofit2:converter-scalars:2.0.0-beta4'//ConverterFactory的String依赖包
+
+    compile 'io.reactivex:rxjava:+'
+    compile 'com.squareup.retrofit:adapter-rxjava:+'
+    compile 'com.trello:rxlifecycle:+'
+    compile 'com.trello:rxlifecycle-components:+'
+    /*rotrofit*/
+    compile 'com.squareup.retrofit2:converter-gson:+'
+    compile 'com.squareup.retrofit2:adapter-rxjava:+'
+//    compile 'com.google.code.gson:gson:+'
+
+    //Glide
+//    compile 'com.squareup.picasso:picasso:2.5.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:support-v4:24.0.0'
+
+    //leakcanary内存泄露检测框架
+    //debugCompile
+    compile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    //releaseCompile
+//    compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    //testCompile
+//    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }
