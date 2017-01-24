@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -31,9 +32,20 @@
         <activity android:name=".activity.ButterActivity" />
         <activity android:name=".activity.ScreemShotActivity" />
         <activity android:name=".activity.DataBindTestActivity"/>
+        <activity android:name=".activity.Dagger2TestActivity"/>
         <activity
             android:name=".activity.SoftKeybordActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activity.RetrofitActivity"/>
+        <activity android:name=".activity.RetrofitRxJavaActivity"/>
+        <activity android:name=".activity.GlideActivity"/>
+        <activity android:name=".activity.LeakCanaryActivity"/>
+
+
+       <!-- <service android:name=".leak.LeakUploadService"/>-->
+        <!-- glide配置 -->
+        <meta-data android:name="com.wzf.com.sample.glide.GlideConfiguration"
+            android:value="GlideModule"/>
     </application>
 
 </manifest>

@@ -27,6 +27,7 @@ import butterknife.ButterKnife;
  * compile 'com.jakewharton:butterknife:8.4.0'
  * annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
  * }
+ * Butter和Dagger2有冲突，目前已解决,http://blog.csdn.net/norwaya007/article/details/52160143
  */
 
 public class ButterActivity extends AppCompatActivity {

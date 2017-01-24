@@ -13,8 +13,13 @@ import com.wzf.com.sample.activity.BounceListViewActivity;
 import com.wzf.com.sample.activity.BounceScrollViewActivity;
 import com.wzf.com.sample.activity.ButterActivity;
 import com.wzf.com.sample.activity.CommAdapterActivity;
+import com.wzf.com.sample.activity.Dagger2TestActivity;
 import com.wzf.com.sample.activity.DataBindTestActivity;
 import com.wzf.com.sample.activity.DesignPatterns.DesignPatternsActivity;
+import com.wzf.com.sample.activity.GlideActivity;
+import com.wzf.com.sample.activity.LeakCanaryActivity;
+import com.wzf.com.sample.activity.RetrofitActivity;
+import com.wzf.com.sample.activity.RetrofitRxJavaActivity;
 import com.wzf.com.sample.activity.ScreemShotActivity;
 import com.wzf.com.sample.activity.SoftKeybordActivity;
 import com.wzf.com.sample.activity.TextActivity;
@@ -55,7 +60,12 @@ public class MainActivity extends AppCompatActivity
                 "SoftKeybordActivity",
                 "ButterActivity",
                 "ScreemShotActivity",
-                "DataBindTestActivity"
+                "DataBindTestActivity",
+                "Dagger2TestActivity",
+                "RetrofitActivity",
+                "RetrofitRxJavaActivity",
+                "GlideActivity",
+                "LeakCanaryActivity"
         };
     }
 
@@ -120,6 +130,22 @@ public class MainActivity extends AppCompatActivity
             case 14:
                 startActivity(new Intent(MainActivity.this, DataBindTestActivity.class));
                 break;
+            case 15:
+                startActivity(new Intent(MainActivity.this, Dagger2TestActivity.class));
+                break;
+            case 16:
+                startActivity(new Intent(MainActivity.this, RetrofitActivity.class));
+                break;
+            case 17:
+                startActivity(new Intent(MainActivity.this, RetrofitRxJavaActivity.class));
+                break;
+            case 18:
+                startActivity(new Intent(MainActivity.this, GlideActivity.class));
+                break;
+            case 19:
+                startActivity(new Intent(MainActivity.this, LeakCanaryActivity.class));
+                break;
+
         }
     }
 }
