@@ -18,6 +18,7 @@ import com.wzf.com.sample.activity.DataBindTestActivity;
 import com.wzf.com.sample.activity.DesignPatterns.DesignPatternsActivity;
 import com.wzf.com.sample.activity.GlideActivity;
 import com.wzf.com.sample.activity.LeakCanaryActivity;
+import com.wzf.com.sample.activity.RealmTestActivity;
 import com.wzf.com.sample.activity.RetrofitActivity;
 import com.wzf.com.sample.activity.RetrofitRxJavaActivity;
 import com.wzf.com.sample.activity.ScreemShotActivity;
@@ -65,7 +66,8 @@ public class MainActivity extends AppCompatActivity
                 "RetrofitActivity",
                 "RetrofitRxJavaActivity",
                 "GlideActivity",
-                "LeakCanaryActivity"
+                "LeakCanaryActivity",
+                "RealmTestActivity"
         };
     }
 
@@ -144,6 +146,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 19:
                 startActivity(new Intent(MainActivity.this, LeakCanaryActivity.class));
+                break;
+            case 20:
+                startActivity(new Intent(MainActivity.this, RealmTestActivity.class));
                 break;
 
         }

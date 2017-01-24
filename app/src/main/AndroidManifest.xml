@@ -40,7 +40,7 @@
         <activity android:name=".activity.RetrofitRxJavaActivity"/>
         <activity android:name=".activity.GlideActivity"/>
         <activity android:name=".activity.LeakCanaryActivity"/>
-
+        <activity android:name=".activity.RealmTestActivity"/>
 
        <!-- <service android:name=".leak.LeakUploadService"/>-->
         <!-- glide配置 -->

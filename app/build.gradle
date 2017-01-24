@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 // 应用插件
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'realm-android'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -64,6 +66,6 @@ dependencies {
     compile 'com.squareup.leakcanary:leakcanary-android:1.5'
     //releaseCompile
 //    compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    //testCompile
-//    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+
 }
