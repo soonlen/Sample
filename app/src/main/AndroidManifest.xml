@@ -41,6 +41,9 @@
         <activity android:name=".activity.GlideActivity"/>
         <activity android:name=".activity.LeakCanaryActivity"/>
         <activity android:name=".activity.RealmTestActivity"/>
+        <activity android:name=".activity.widgets.WidgetsActivity"/>
+        <activity android:name=".activity.widgets.InfiniteViewActivity"/>
+
 
        <!-- <service android:name=".leak.LeakUploadService"/>-->
         <!-- glide配置 -->

@@ -66,6 +66,5 @@ dependencies {
     compile 'com.squareup.leakcanary:leakcanary-android:1.5'
     //releaseCompile
 //    compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-
-
+    compile project(path: ':banner')
 }

@@ -27,6 +27,7 @@ import com.wzf.com.sample.activity.TextActivity;
 import com.wzf.com.sample.activity.UtilActivity;
 import com.wzf.com.sample.activity.WheelViewActivity;
 import com.wzf.com.sample.activity.XListViewActivity;
+import com.wzf.com.sample.activity.widgets.WidgetsActivity;
 import com.wzf.com.sample.loadingview.LoadingViewActivity;
 import com.wzf.com.sample.webview.WebViewActivity;
 
@@ -67,7 +68,8 @@ public class MainActivity extends AppCompatActivity
                 "RetrofitRxJavaActivity",
                 "GlideActivity",
                 "LeakCanaryActivity",
-                "RealmTestActivity"
+                "RealmTestActivity",
+                "WidgetsActivity"
         };
     }
 
@@ -150,7 +152,9 @@ public class MainActivity extends AppCompatActivity
             case 20:
                 startActivity(new Intent(MainActivity.this, RealmTestActivity.class));
                 break;
-
+            case 21:
+                startActivity(new Intent(MainActivity.this, WidgetsActivity.class));
+                break;
         }
     }
 }
