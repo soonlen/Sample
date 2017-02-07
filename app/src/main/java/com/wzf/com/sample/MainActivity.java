@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.wzf.com.sample.activity.AnimationListViewActivity;
+import com.wzf.com.sample.activity.AnnotationActivity;
 import com.wzf.com.sample.activity.BounceListViewActivity;
 import com.wzf.com.sample.activity.BounceScrollViewActivity;
 import com.wzf.com.sample.activity.ButterActivity;
@@ -69,7 +70,8 @@ public class MainActivity extends AppCompatActivity
                 "GlideActivity",
                 "LeakCanaryActivity",
                 "RealmTestActivity",
-                "WidgetsActivity"
+                "WidgetsActivity",
+                "AnnotationActivity"
         };
     }
 
@@ -155,6 +157,10 @@ public class MainActivity extends AppCompatActivity
             case 21:
                 startActivity(new Intent(MainActivity.this, WidgetsActivity.class));
                 break;
+            case 22:
+                startActivity(new Intent(MainActivity.this, AnnotationActivity.class));
+                break;
+
         }
     }
 }
