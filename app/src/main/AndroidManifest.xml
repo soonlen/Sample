@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -51,7 +56,14 @@
             android:name="com.wzf.com.sample.glide.GlideConfiguration"
             android:value="GlideModule" />
 
-        <activity android:name=".activity.AnnotationActivity"></activity>
+        <activity android:name=".activity.AnnotationActivity" />
+        <activity
+            android:name=".QrScanActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.netease.scan.ui.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>

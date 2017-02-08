@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity
                 "LeakCanaryActivity",
                 "RealmTestActivity",
                 "WidgetsActivity",
-                "AnnotationActivity"
+                "AnnotationActivity",
+                "QrScanActivity"
         };
     }
 
@@ -159,6 +160,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 22:
                 startActivity(new Intent(MainActivity.this, AnnotationActivity.class));
+                break;
+            case 23:
+                startActivity(new Intent(MainActivity.this, QrScanActivity.class));
                 break;
 
         }
