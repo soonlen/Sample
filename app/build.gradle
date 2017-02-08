@@ -4,16 +4,17 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "com.wzf.com.sample"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -37,7 +38,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:appcompat-v7:23.2.1'
     testCompile 'junit:junit:4.12'
     //使用Butter注入式框架,2个
     compile 'com.jakewharton:butterknife:8.4.0'
@@ -62,7 +63,7 @@ dependencies {
     //Glide
 //    compile 'com.squareup.picasso:picasso:2.5.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:support-v4:24.0.0'
+    compile 'com.android.support:support-v4:23.0.0'
 
     //leakcanary内存泄露检测框架
     //debugCompile
