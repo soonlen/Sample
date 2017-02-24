@@ -50,7 +50,7 @@ public class AnnotateUtils {
                         int[] tids = m.value();
                         Log.e("annotation", "数组大小：" + tids.length);*///上面这个方法也可以直接获取
                         Method aMethod = annotationType.getDeclaredMethod("value");
-                        int[] ids = (int[]) aMethod.invoke(annotation, null);
+                        int[] ids = (int[]) aMethod.invoke(annotation, new  Object[]{});
                         //通过InvocationHandler设置代理
                         DynamicHandler handler = new DynamicHandler(activity);
                         handler.addMethod(methodName, method);

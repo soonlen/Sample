@@ -18,8 +18,10 @@ import com.wzf.com.sample.activity.Dagger2TestActivity;
 import com.wzf.com.sample.activity.DataBindTestActivity;
 import com.wzf.com.sample.activity.DesignPatterns.DesignPatternsActivity;
 import com.wzf.com.sample.activity.GlideActivity;
+import com.wzf.com.sample.activity.JsonTestActivity;
 import com.wzf.com.sample.activity.LeakCanaryActivity;
 import com.wzf.com.sample.activity.RealmTestActivity;
+import com.wzf.com.sample.activity.RecycleViewActivity;
 import com.wzf.com.sample.activity.RetrofitActivity;
 import com.wzf.com.sample.activity.RetrofitRxJavaActivity;
 import com.wzf.com.sample.activity.ScreemShotActivity;
@@ -72,7 +74,9 @@ public class MainActivity extends AppCompatActivity
                 "RealmTestActivity",
                 "WidgetsActivity",
                 "AnnotationActivity",
-                "QrScanActivity"
+                "QrScanActivity",
+                "JsonTestActivity",
+                "RecycleViewActivity"
         };
     }
 
@@ -163,6 +167,12 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 23:
                 startActivity(new Intent(MainActivity.this, QrScanActivity.class));
+                break;
+            case 24:
+                startActivity(new Intent(MainActivity.this, JsonTestActivity.class));
+                break;
+            case 25:
+                startActivity(new Intent(MainActivity.this, RecycleViewActivity.class));
                 break;
 
         }

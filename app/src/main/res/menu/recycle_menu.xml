@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/recycle_add"
+        android:icon="@drawable/jia"
+        android:title="加"></item>
+    <item
+        android:id="@+id/recycle_del"
+        android:icon="@drawable/jian"
+        android:title="减" />
+</menu>

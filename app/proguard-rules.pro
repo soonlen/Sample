@@ -15,3 +15,9 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+#指定外部模糊字典
+-obfuscationdictionary dictionary.txt
+#指定class模糊字典
+#-classobfuscationdictionary filename
+#指定package模糊字典
+#-packageobfuscationdictionary filename

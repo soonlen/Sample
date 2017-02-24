@@ -1,7 +1,8 @@
 package com.wzf.com.sample.application;
 
-import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.netease.scan.QrScan;
 import com.netease.scan.QrScanConfiguration;
@@ -15,7 +16,7 @@ import io.realm.Realm;
  * Created by soonlen on 2017/1/24.
  */
 
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication {
 
     private RefWatcher refWatcher;
 
@@ -40,7 +41,11 @@ public class MyApplication extends Application {
     protected RefWatcher installLeakCanary() {
         return RefWatcher.DISABLED;
     }
-
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
+    }
     private void initQrScan() {
         // 自定义配置
         QrScanConfiguration configuration = new QrScanConfiguration.Builder(this)

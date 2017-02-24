@@ -13,11 +13,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -73,4 +74,11 @@ dependencies {
     compile project(path: ':banner')
     //二维码
     compile project(path: ':lib-qr-scan')
+    //jackson
+    compile files('libs/jackson-all-1.9.2.jar')
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.6'
+
+    compile 'com.android.support:multidex:1.0.1'
+
+    compile 'com.android.support:recyclerview-v7:23.2.1'
 }
