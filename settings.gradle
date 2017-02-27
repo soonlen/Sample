@@ -1,1 +1,1 @@
-include ':app', ':banner', ':lib-qr-scan'
+include ':app', ':banner', ':lib-qr-scan', ':imageloader'

@@ -57,6 +57,8 @@ public class RecycleViewActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));
         mRecyclerView.setAdapter(mAdater);
+//        LruCache
+//        DiskLruCache
     }
 
     @Override

@@ -9,6 +9,9 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -64,8 +67,9 @@
             android:name="com.netease.scan.ui.CaptureActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.JsonTestActivity"></activity>
-        <activity android:name=".activity.RecycleViewActivity"/>
+        <activity android:name=".activity.JsonTestActivity" />
+        <activity android:name=".activity.RecycleViewActivity" />
+        <activity android:name=".activity.ImageLoaderTestActivity"></activity>
     </application>
 
 </manifest>

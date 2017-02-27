@@ -18,6 +18,7 @@ import com.wzf.com.sample.activity.Dagger2TestActivity;
 import com.wzf.com.sample.activity.DataBindTestActivity;
 import com.wzf.com.sample.activity.DesignPatterns.DesignPatternsActivity;
 import com.wzf.com.sample.activity.GlideActivity;
+import com.wzf.com.sample.activity.ImageLoaderTestActivity;
 import com.wzf.com.sample.activity.JsonTestActivity;
 import com.wzf.com.sample.activity.LeakCanaryActivity;
 import com.wzf.com.sample.activity.RealmTestActivity;
@@ -76,7 +77,8 @@ public class MainActivity extends AppCompatActivity
                 "AnnotationActivity",
                 "QrScanActivity",
                 "JsonTestActivity",
-                "RecycleViewActivity"
+                "RecycleViewActivity",
+                "ImageLoaderTestActivity"
         };
     }
 
@@ -174,7 +176,9 @@ public class MainActivity extends AppCompatActivity
             case 25:
                 startActivity(new Intent(MainActivity.this, RecycleViewActivity.class));
                 break;
-
+            case 26:
+                startActivity(new Intent(MainActivity.this, ImageLoaderTestActivity.class));
+                break;
         }
     }
 }
