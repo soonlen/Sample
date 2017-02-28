@@ -54,6 +54,15 @@ public class ImageLoaderTestActivity extends AppCompatActivity {
         public void onBindViewHolder(ImageHolder holder, int position) {
             ImageLoader.getInstance().loadImage(images.get(position), holder.imageView);
             holder.textView.setText("条目" + (position + 1));
+
+            /*Glide.with(ImageLoaderTestActivity.this)
+                    .load(images.get(position))
+                    .into(holder.imageView);*/
+        }
+
+        @Override
+        public void onViewRecycled(ImageHolder holder) {
+            super.onViewRecycled(holder);
         }
 
         @Override

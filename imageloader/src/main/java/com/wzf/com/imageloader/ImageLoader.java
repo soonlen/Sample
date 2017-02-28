@@ -49,7 +49,7 @@ public class ImageLoader {
             super.entryRemoved(evicted, key, oldValue, newValue);
             if (oldValue != null) {
                 Log.e(TAG, "remove bitmap from first cache , url is " + key);
-                secondCache.put(key, new SoftReference<>(oldValue));
+                putSecondeCache(key,oldValue);
             }
         }
     };
@@ -242,7 +242,7 @@ public class ImageLoader {
      * @param url
      * @param bitmap
      */
-    private void putSecondeCache(String url, Bitmap bitmap) {
+    private static synchronized void putSecondeCache(String url, Bitmap bitmap) {
         Log.e(TAG, "add bitmap to seconde cache, url is  " + url);
         secondCache.put(url, new SoftReference<Bitmap>(bitmap));
     }
@@ -311,7 +311,7 @@ public class ImageLoader {
      * @param url
      * @param bitmap
      */
-    private void putFistCache(String url, Bitmap bitmap) {
+    private synchronized void putFistCache(String url, Bitmap bitmap) {
         Log.e(TAG, "add bitmap to first cache, url is  " + url);
         firstCache.put(url, bitmap);
     }
@@ -322,7 +322,7 @@ public class ImageLoader {
      * @param url
      * @return
      */
-    private Bitmap getFromSecondCache(String url) {
+    private synchronized Bitmap getFromSecondCache(String url) {
         SoftReference<Bitmap> ref = secondCache.get(url);
         if (ref != null) {
             Bitmap bitmap = ref.get();
@@ -339,7 +339,7 @@ public class ImageLoader {
      * @param url
      * @return
      */
-    private Bitmap getFromFirstCache(String url) {
+    private synchronized Bitmap getFromFirstCache(String url) {
         Bitmap bitmap = firstCache.get(url);
         if (bitmap != null)
             return bitmap;

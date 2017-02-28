@@ -52,7 +52,8 @@ public class ImageLoader {
             super.entryRemoved(evicted, key, oldValue, newValue);
             if (oldValue != null) {
                 Log.e(TAG, "remove bitmap from first cache , url is " + key);
-                secondCache.put(key, new SoftReference<>(oldValue));
+//                secondCache.put(key, new SoftReference<>(oldValue));
+                putSecondeCache(key, oldValue);
             }
         }
     };
@@ -114,7 +115,7 @@ public class ImageLoader {
             return;
         }
         //启动线程去展示图片，如果缓存中有，则展示缓存中的图片，如果没有，则网络获取
-        imageView.setImageDrawable(defaultDrawble);
+//        imageView.setImageDrawable(defaultDrawble);
         DownloadTask task = new DownloadTask(imageView);
         task.execute(url);
         taskCollection.add(task);
@@ -130,6 +131,17 @@ public class ImageLoader {
 
         public DownloadTask(ImageView imageView) {
             this.imageView = imageView;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            imageView.setImageDrawable(defaultDrawble);
+            DownloadTask oTask = (DownloadTask) imageView.getTag();
+            if (oTask != null) {
+                oTask.cancel(true);
+            }
+            imageView.setTag(this);
         }
 
         @Override
@@ -179,6 +191,7 @@ public class ImageLoader {
                     try {
                         fileInputStream.close();
                     } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
             }
@@ -188,7 +201,7 @@ public class ImageLoader {
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             // 将下载好的图片显示出来。
-            if (imageView != null && bitmap != null) {
+            if (!this.isCancelled() && imageView != null && bitmap != null) {
                 imageView.setImageBitmap(bitmap);
             }
             taskCollection.remove(this);
@@ -245,7 +258,7 @@ public class ImageLoader {
      * @param url
      * @param bitmap
      */
-    private void putSecondeCache(String url, Bitmap bitmap) {
+    private static synchronized void putSecondeCache(String url, Bitmap bitmap) {
         Log.e(TAG, "add bitmap to seconde cache, url is  " + url);
         secondCache.put(url, new SoftReference<Bitmap>(bitmap));
     }
@@ -314,7 +327,7 @@ public class ImageLoader {
      * @param url
      * @param bitmap
      */
-    private void putFistCache(String url, Bitmap bitmap) {
+    private synchronized void putFistCache(String url, Bitmap bitmap) {
         Log.e(TAG, "add bitmap to first cache, url is  " + url);
         firstCache.put(url, bitmap);
     }
@@ -325,7 +338,7 @@ public class ImageLoader {
      * @param url
      * @return
      */
-    private Bitmap getFromSecondCache(String url) {
+    private synchronized Bitmap getFromSecondCache(String url) {
         SoftReference<Bitmap> ref = secondCache.get(url);
         if (ref != null) {
             Bitmap bitmap = ref.get();
@@ -342,7 +355,7 @@ public class ImageLoader {
      * @param url
      * @return
      */
-    private Bitmap getFromFirstCache(String url) {
+    private synchronized Bitmap getFromFirstCache(String url) {
         Bitmap bitmap = firstCache.get(url);
         if (bitmap != null)
             return bitmap;
