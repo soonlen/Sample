@@ -29,6 +29,7 @@ import com.wzf.com.sample.activity.ScreemShotActivity;
 import com.wzf.com.sample.activity.SoftKeybordActivity;
 import com.wzf.com.sample.activity.TextActivity;
 import com.wzf.com.sample.activity.UtilActivity;
+import com.wzf.com.sample.activity.VitamioDemoActivity;
 import com.wzf.com.sample.activity.WheelViewActivity;
 import com.wzf.com.sample.activity.XListViewActivity;
 import com.wzf.com.sample.activity.widgets.WidgetsActivity;
@@ -78,7 +79,8 @@ public class MainActivity extends AppCompatActivity
                 "QrScanActivity",
                 "JsonTestActivity",
                 "RecycleViewActivity",
-                "ImageLoaderTestActivity"
+                "ImageLoaderTestActivity",
+                "VitamioDemoActivity"
         };
     }
 
@@ -178,6 +180,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 26:
                 startActivity(new Intent(MainActivity.this, ImageLoaderTestActivity.class));
+                break;
+            case 27:
+                startActivity(new Intent(MainActivity.this, VitamioDemoActivity.class));
                 break;
         }
     }

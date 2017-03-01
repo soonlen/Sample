@@ -60,6 +60,7 @@ dependencies {
     //二维码
     compile project(path: ':lib-qr-scan')
 //    compile project(path: ':imageloader');
+    compile project(path: ':vitamio2');
     //jackson
     compile files('libs/jackson-all-1.9.2.jar')
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.6'

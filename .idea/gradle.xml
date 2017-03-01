@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/banner" />
             <option value="$PROJECT_DIR$/imageloader" />
             <option value="$PROJECT_DIR$/lib-qr-scan" />
+            <option value="$PROJECT_DIR$/vitamio2" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
