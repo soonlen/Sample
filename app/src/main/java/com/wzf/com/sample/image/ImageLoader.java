@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v4.util.LruCache;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.wzf.com.sample.util.L;
@@ -176,7 +177,7 @@ public class ImageLoader {
                 // 将缓存数据解析成Bitmap对象
                 Bitmap bitmap = null;
                 if (fileDescriptor != null) {
-                    bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+                    bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor, null, getOps(fileInputStream, imageView));
                 }
                 if (bitmap != null) {
                     // 将Bitmap对象添加到内存缓存当中
@@ -206,6 +207,49 @@ public class ImageLoader {
             }
             taskCollection.remove(this);
         }
+    }
+
+    /**
+     * 获取图片的options，根据控件高度宽度来解析成bitmap的参数
+     *
+     * @param fileInputStream
+     * @param imageView
+     * @return
+     */
+    private BitmapFactory.Options getOps(FileInputStream fileInputStream, ImageView imageView) {
+        if (null == imageView)
+            return null;
+        try {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            int width = imageView.getMeasuredWidth();
+            int height = imageView.getMeasuredHeight();
+            if (width == 0 && height == 0) {
+                int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                imageView.measure(w, h);
+                width = imageView.getMeasuredWidth();
+                height = imageView.getMeasuredHeight();
+                L.e("image is not inflate, get measured width " + width + " height " + height);
+            }
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeFileDescriptor(fileInputStream.getFD(), null, options);
+            float srcWidth = options.outWidth;
+            float srcHeight = options.outHeight;
+            int inSampleSize = 1;
+            if (srcHeight > height || srcWidth > width) {
+                if (srcWidth / width > srcHeight / height) {
+                    inSampleSize = Math.round(srcWidth / width);
+                } else {
+                    inSampleSize = Math.round(srcHeight / height);
+                }
+            }
+            options.inSampleSize = inSampleSize;
+            options.inJustDecodeBounds = false;
+            return options;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
