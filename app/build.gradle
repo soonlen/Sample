@@ -87,4 +87,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     provided 'com.google.dagger:dagger-compiler:2.6'
     provided 'org.glassfish:javax.annotation:10.0-b28'
+//event bus
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

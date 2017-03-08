@@ -76,7 +76,11 @@
             android:name=".activity.VitamioDemoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_vitamio_demo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.DownloadActivity"
+            android:label="@string/title_activity_download" />
+        <activity android:name=".activity.EventBusActivity"></activity>
     </application>
 
 </manifest>
