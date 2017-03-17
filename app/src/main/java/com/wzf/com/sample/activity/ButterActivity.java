@@ -12,6 +12,8 @@ import android.widget.ToggleButton;
 
 import com.wzf.com.sample.R;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -55,6 +57,11 @@ public class ButterActivity extends AppCompatActivity {
         radioButton.toggle();
         checkedTextView.toggle();
         seekBar.setProgress(50);
+
+
+        HashMap<String, String> map =new HashMap<>();
     }
+
+
 
 }

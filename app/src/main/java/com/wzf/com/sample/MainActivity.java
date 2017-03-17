@@ -17,6 +17,8 @@ import com.wzf.com.sample.activity.CommAdapterActivity;
 import com.wzf.com.sample.activity.Dagger2TestActivity;
 import com.wzf.com.sample.activity.DataBindTestActivity;
 import com.wzf.com.sample.activity.DesignPatterns.DesignPatternsActivity;
+import com.wzf.com.sample.activity.DownloadActivity;
+import com.wzf.com.sample.activity.EventBusActivity;
 import com.wzf.com.sample.activity.GlideActivity;
 import com.wzf.com.sample.activity.ImageLoaderTestActivity;
 import com.wzf.com.sample.activity.JsonTestActivity;
@@ -27,8 +29,10 @@ import com.wzf.com.sample.activity.RetrofitActivity;
 import com.wzf.com.sample.activity.RetrofitRxJavaActivity;
 import com.wzf.com.sample.activity.ScreemShotActivity;
 import com.wzf.com.sample.activity.SoftKeybordActivity;
+import com.wzf.com.sample.activity.SwipRefreshLayoutActivity;
 import com.wzf.com.sample.activity.TextActivity;
 import com.wzf.com.sample.activity.UtilActivity;
+import com.wzf.com.sample.activity.VerticalViewPagerActivity;
 import com.wzf.com.sample.activity.VitamioDemoActivity;
 import com.wzf.com.sample.activity.WheelViewActivity;
 import com.wzf.com.sample.activity.XListViewActivity;
@@ -80,7 +84,11 @@ public class MainActivity extends AppCompatActivity
                 "JsonTestActivity",
                 "RecycleViewActivity",
                 "ImageLoaderTestActivity",
-                "VitamioDemoActivity"
+                "VitamioDemoActivity",
+                "DownloadActivity",
+                "EventBusActivity",
+                "VerticalViewPager",
+                "SwipRefreshLayoutActivity"
         };
     }
 
@@ -183,6 +191,18 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 27:
                 startActivity(new Intent(MainActivity.this, VitamioDemoActivity.class));
+                break;
+            case 28:
+                startActivity(new Intent(MainActivity.this, DownloadActivity.class));
+                break;
+            case 29:
+                startActivity(new Intent(MainActivity.this, EventBusActivity.class));
+                break;
+            case 30:
+                startActivity(new Intent(MainActivity.this, VerticalViewPagerActivity.class));
+                break;
+            case 31:
+                startActivity(new Intent(MainActivity.this, SwipRefreshLayoutActivity.class));
                 break;
         }
     }

@@ -11,4 +11,5 @@
     <string name="add_vote">Click to Add A Vote</string>
     <string name="title_activity_image_loader_test">ImageLoaderTestActivity</string>
     <string name="title_activity_vitamio_demo">VitamioDemoActivity</string>
+    <string name="title_activity_download">DownloadActivity</string>
 </resources>

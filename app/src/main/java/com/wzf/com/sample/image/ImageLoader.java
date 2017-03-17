@@ -70,7 +70,7 @@ public class ImageLoader {
     static DefaultDrawble defaultDrawble = new DefaultDrawble();
 
     public static void init(Context context) {
-        mContext = context;
+        mContext = context.getApplicationContext();
         taskCollection = new HashSet<>();
         initDiskLruCache();
     }
