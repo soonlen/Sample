@@ -34,6 +34,7 @@ import com.wzf.com.sample.activity.TextActivity;
 import com.wzf.com.sample.activity.UtilActivity;
 import com.wzf.com.sample.activity.VerticalViewPagerActivity;
 import com.wzf.com.sample.activity.VitamioDemoActivity;
+import com.wzf.com.sample.activity.VolleyTestActivity;
 import com.wzf.com.sample.activity.WheelViewActivity;
 import com.wzf.com.sample.activity.XListViewActivity;
 import com.wzf.com.sample.activity.widgets.WidgetsActivity;
@@ -88,7 +89,8 @@ public class MainActivity extends AppCompatActivity
                 "DownloadActivity",
                 "EventBusActivity",
                 "VerticalViewPager",
-                "SwipRefreshLayoutActivity"
+                "SwipRefreshLayoutActivity",
+                "VolleyTestActivity"
         };
     }
 
@@ -203,6 +205,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 31:
                 startActivity(new Intent(MainActivity.this, SwipRefreshLayoutActivity.class));
+                break;
+            case 32:
+                startActivity(new Intent(MainActivity.this, VolleyTestActivity.class));
                 break;
         }
     }

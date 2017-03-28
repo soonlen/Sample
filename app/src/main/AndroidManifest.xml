@@ -82,7 +82,8 @@
             android:label="@string/title_activity_download" />
         <activity android:name=".activity.EventBusActivity" />
         <activity android:name=".activity.VerticalViewPagerActivity" />
-        <activity android:name=".activity.SwipRefreshLayoutActivity"></activity>
+        <activity android:name=".activity.SwipRefreshLayoutActivity" />
+        <activity android:name=".activity.VolleyTestActivity"></activity>
     </application>
 
 </manifest>

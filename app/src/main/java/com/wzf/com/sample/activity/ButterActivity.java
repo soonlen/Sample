@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by soonlen on 2017/1/19.
@@ -45,12 +46,13 @@ public class ButterActivity extends AppCompatActivity {
     CheckedTextView checkedTextView;
     @BindView(R.id.seekBar)
     SeekBar seekBar;
+    private Unbinder binder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_butter);
-        ButterKnife.bind(this);
+        binder = ButterKnife.bind(this);
         tvName.setText("这是测试Butter注入框架使用");
         btnTest.setText("按钮……");
         tbTest.setChecked(true);
@@ -59,9 +61,13 @@ public class ButterActivity extends AppCompatActivity {
         seekBar.setProgress(50);
 
 
-        HashMap<String, String> map =new HashMap<>();
+        HashMap<String, String> map = new HashMap<>();
     }
 
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binder.unbind();
+    }
 }
