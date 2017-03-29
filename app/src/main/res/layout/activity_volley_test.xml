@@ -9,9 +9,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.wzf.com.sample.activity.VolleyTestActivity">
-<TextView
-    android:id="@+id/volley_text"
-    android:text="empty"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/volley_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="empty" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:onClick="volleyRequest"
+        android:text="volley test" />
 </RelativeLayout>
