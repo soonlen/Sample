@@ -5,11 +5,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.animation.TranslateAnimation;
 import android.widget.ScrollView;
-
-import com.wzf.com.sample.util.L;
 
 /**
  * Created by soonlen on 2016/11/21.
@@ -17,123 +14,169 @@ import com.wzf.com.sample.util.L;
 
 public class BounceScrollView extends ScrollView {
 
-    private final static int MAX_SCROLL = 4;
-    private Rect mRect = new Rect();
-    private float y;
-    private View inner;
-    int mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    private float scrollY;
+    private static final String TAG = "BounceScrollView";
 
+    private View inner;// 孩子View
 
-    public BounceScrollView(Context context) {
-        super(context);
-    }
+    private float y;// 点击时y坐标
+
+    private Rect normal = new Rect();// 矩形(这里只是个形式，只是用于判断是否需要动画.)
+
+    private boolean isCount = false;// 是否开始计算
+    private float lastX = 0;
+    private float lastY = 0;
+    private float currentX = 0;
+    private float currentY = 0;
+    private float distanceX = 0;
+    private float distanceY = 0;
+    private boolean upDownSlide = false; //判断上下滑动的flag
 
     public BounceScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public BounceScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    public BounceScrollView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
+    /***
+     * 根据 XML 生成视图工作完成.该函数在生成视图的最后调用，在所有子视图添加完之后. 即使子类覆盖了 onFinishInflate
+     * 方法，也应该调用父类的方法，使该方法得以执行.
+     */
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        if (getChildCount() > 0)
+        if (getChildCount() > 0) {
             inner = getChildAt(0);
+            View view;
+        }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        // TODO Auto-generated method stub
+        currentX = ev.getX();
+        currentY = ev.getY();
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                distanceX = currentX - lastX;
+                distanceY = currentY - lastY;
+                if (Math.abs(distanceX) < Math.abs(distanceY) && Math.abs(distanceY) > 12) {
+                    upDownSlide = true;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+
+                break;
+            default:
+                break;
+        }
+        lastX = currentX;
+        lastY = currentY;
+        if (upDownSlide && inner != null) commOnTouchEvent(ev);
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                scrollY = ev.getY();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                float y = ev.getY();
-                if (Math.abs(y - scrollY) > mTouchSlop) {
-                    scrollY = y;
-                    return true;
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-
-                break;
-        }
+        // TODO Auto-generated method stub
         return super.onInterceptTouchEvent(ev);
     }
 
+    /***
+     * 监听touch
+     */
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (inner != null) {
-            handlerTouchEvent(ev);
-        }
         return super.onTouchEvent(ev);
     }
 
-    private void handlerTouchEvent(MotionEvent ev) {
-//        L.e("motion :" + ev.getAction());
-        switch (ev.getAction()) {
+
+    /***
+     * 触摸事件
+     *
+     * @param ev
+     */
+    public void commOnTouchEvent(MotionEvent ev) {
+        int action = ev.getAction();
+        switch (action) {
             case MotionEvent.ACTION_DOWN:
-                y = ev.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                // 手指松开.
+                if (isNeedAnimation()) {
+                    animation();
+                    isCount = false;
+                }
+                clear0();
                 break;
             case MotionEvent.ACTION_MOVE:
-                final float preY = y;
-                float nowY = ev.getY();
-                /**
-                 * MAX_SCROLL=4 表示 拖动的距离为屏幕的高度的1/4
-                 */
-                int deltaY = (int) (preY - nowY) / MAX_SCROLL;
+                final float preY = y;// 按下时的y坐标
+                float nowY = ev.getY();// 时时y坐标
+                int deltaY = (int) (preY - nowY);// 滑动距离
+                if (!isCount) {
+                    deltaY = 0; // 在这里要归0.
+                }
+                y = nowY;
+                // 当滚动到最上或者最下时就不会再滚动，这时移动布局
                 if (isNeedMove()) {
-                    if (mRect.isEmpty()) {
-                        mRect.set(inner.getLeft(), inner.getTop(), inner.getRight(), inner.getBottom());
+                    // 初始化头部矩形
+                    if (normal.isEmpty()) {
+                        // 保存正常的布局位置
+                        normal.set(inner.getLeft(), inner.getTop(),
+                                inner.getRight(), inner.getBottom());
                     }
-                    int yy = inner.getTop() - deltaY;
-                    inner.layout(inner.getLeft(), yy, inner.getRight(), inner.getBottom() + yy);
+                    // 移动布局
+                    inner.layout(inner.getLeft(), inner.getTop() - deltaY / 2,
+                            inner.getRight(), inner.getBottom() - deltaY / 2);
                 }
-            case MotionEvent.ACTION_UP:
-                if (isNeedAnimation()) {
-                    resetAnimation();
-                }
+                isCount = true;
+                break;
+
+            default:
                 break;
         }
     }
 
-    private void resetAnimation() {
-        TranslateAnimation anim = new TranslateAnimation(0, 0, inner.getTop(), mRect.top);
-        anim.setDuration(200);
-        inner.startAnimation(anim);
-        inner.layout(mRect.left, mRect.top, mRect.right, mRect.bottom);
-        mRect.setEmpty();
+    /***
+     * 回缩动画
+     */
+    public void animation() {
+        // 开启移动动画
+        TranslateAnimation ta = new TranslateAnimation(0, 0, inner.getTop(),
+                normal.top);
+        ta.setDuration(200);
+        inner.startAnimation(ta);
+        // 设置回到正常的布局位置
+        inner.layout(normal.left, normal.top, normal.right, normal.bottom);
+        normal.setEmpty();
     }
 
     // 是否需要开启动画
     public boolean isNeedAnimation() {
-        return !mRect.isEmpty();
+        return !normal.isEmpty();
     }
 
-    /**
-     * 是否需要滚动
+    /***
+     * 是否需要移动布局 inner.getMeasuredHeight():获取的是控件的总高度
+     *
+     * getHeight()：获取的是屏幕的高度
      *
      * @return
      */
-    private boolean isNeedMove() {
+    public boolean isNeedMove() {
         int offset = inner.getMeasuredHeight() - getHeight();
-        float scrollY = getScrollY();
-        L.e("offset:" + offset + ",scrollY:" + scrollY);
-        if (scrollY == 0 || offset == scrollY) {
-            return true;
-        }
-        View lastChild = getChildAt(getChildCount() - 1);
-        int bot = lastChild.getBottom();
-        if (bot < getHeight()) {
+        int scrollY = getScrollY();
+        // 0是顶部，后面那个是底部
+        if (scrollY == 0 || scrollY == offset) {
             return true;
         }
         return false;
+    }
+
+    private void clear0() {
+        lastX = 0;
+        lastY = 0;
+        distanceX = 0;
+        distanceY = 0;
+        upDownSlide = false;
     }
 }
